@@ -11,7 +11,8 @@
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="assets/hero-mockup.webp" fetchpriority="high" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     :root {
       --primary: 160 84% 39%;
@@ -43,7 +44,7 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
-    img, video { max-width: 100%; display: block; }
+    img, video { max-width: 100%; height: auto; display: block; }
     a { color: inherit; text-decoration: none; }
     button { font-family: inherit; }
 
@@ -1008,11 +1009,13 @@
       usada por miles de personas.
     </p>
     <img
-      src="assets/hero-mockup-D1ZZVWh_.webp"
+      src="assets/hero-mockup.webp"
       alt="Mis Finanzas Pro - Vista de plantilla"
       class="hero-img"
+      width="920" height="675"
       loading="eager"
       fetchpriority="high"
+      decoding="async"
     />
   </div>
 </section>
@@ -1020,18 +1023,18 @@
 <!-- TICKER -->
 <div class="ticker-wrap">
   <div class="ticker-track">
-    <img src="assets/badge-diseno-moderno-DivtoFrp.png" alt="Diseño Moderno" />
-    <img src="assets/badge-facil-usar-BYdYr_HK.png" alt="Fácil de Usar" />
-    <img src="assets/badge-ingresos-gastos-_ma_WsvQ.png" alt="Ingresos y Gastos" />
-    <img src="assets/badge-editable-JviLgfcG.png" alt="100% Editable" />
-    <img src="assets/badge-moneda-local-D_AGvJH2.png" alt="Elige tu Moneda Local" />
-    <img src="assets/badge-graficos-D5T4RW7U.png" alt="Gráficos Dashboards Interactivos" />
-    <img src="assets/badge-diseno-moderno-DivtoFrp.png" alt="" aria-hidden="true" />
-    <img src="assets/badge-facil-usar-BYdYr_HK.png" alt="" aria-hidden="true" />
-    <img src="assets/badge-ingresos-gastos-_ma_WsvQ.png" alt="" aria-hidden="true" />
-    <img src="assets/badge-editable-JviLgfcG.png" alt="" aria-hidden="true" />
-    <img src="assets/badge-moneda-local-D_AGvJH2.png" alt="" aria-hidden="true" />
-    <img src="assets/badge-graficos-D5T4RW7U.png" alt="" aria-hidden="true" />
+    <img src="assets/badge-diseno-moderno-DivtoFrp.png" alt="Diseño Moderno" width="180" height="54" loading="lazy" decoding="async" />
+    <img src="assets/badge-facil-usar-BYdYr_HK.png" alt="Fácil de Usar" width="180" height="54" loading="lazy" decoding="async" />
+    <img src="assets/badge-ingresos-gastos-_ma_WsvQ.png" alt="Ingresos y Gastos" width="180" height="54" loading="lazy" decoding="async" />
+    <img src="assets/badge-editable-JviLgfcG.png" alt="100% Editable" width="180" height="54" loading="lazy" decoding="async" />
+    <img src="assets/badge-moneda-local-D_AGvJH2.png" alt="Elige tu Moneda Local" width="180" height="54" loading="lazy" decoding="async" />
+    <img src="assets/badge-graficos-D5T4RW7U.png" alt="Gráficos Dashboards Interactivos" width="180" height="54" loading="lazy" decoding="async" />
+    <img src="assets/badge-diseno-moderno-DivtoFrp.png" alt="" aria-hidden="true" width="180" height="54" loading="lazy" decoding="async" />
+    <img src="assets/badge-facil-usar-BYdYr_HK.png" alt="" aria-hidden="true" width="180" height="54" loading="lazy" decoding="async" />
+    <img src="assets/badge-ingresos-gastos-_ma_WsvQ.png" alt="" aria-hidden="true" width="180" height="54" loading="lazy" decoding="async" />
+    <img src="assets/badge-editable-JviLgfcG.png" alt="" aria-hidden="true" width="180" height="54" loading="lazy" decoding="async" />
+    <img src="assets/badge-moneda-local-D_AGvJH2.png" alt="" aria-hidden="true" width="180" height="54" loading="lazy" decoding="async" />
+    <img src="assets/badge-graficos-D5T4RW7U.png" alt="" aria-hidden="true" width="180" height="54" loading="lazy" decoding="async" />
   </div>
 </div>
 <div class="ticker-btn-wrap">
@@ -1046,7 +1049,7 @@
     <p class="section-sub">De esta manera nos diferenciamos de todas las plantillas que hay en el mercado</p>
     <div class="benefits-grid">
       <div class="benefits-img-wrap">
-        <img src="assets/presupuesto-mensual-B1YXHDsP.png" alt="Presupuesto Mensual" />
+        <img src="assets/presupuesto-mensual.webp" alt="Presupuesto Mensual" width="1200" height="900" loading="lazy" decoding="async" />
       </div>
       <div class="benefits-checks">
         <div class="check-item"><div class="icon">✓</div> Ingresos</div>
@@ -1069,7 +1072,7 @@
   <div class="dark-row reveal">
     <div class="dark-title">Pago de Deudas <br/><span>Bola de Nieve</span></div>
     <div class="dark-card">
-      <img src="assets/pago-deudas-CsIqHXMn.webp" alt="Sistema de pago de deudas con método bola de nieve" />
+      <img src="assets/pago-deudas.webp" alt="Sistema de pago de deudas con método bola de nieve" width="900" height="676" loading="lazy" decoding="async" />
     </div>
   </div>
 </section>
@@ -1079,7 +1082,7 @@
   <div class="dark-row reverse reveal">
     <div class="dark-title">Fondo de <span>Ahorros</span></div>
     <div class="dark-card">
-      <img src="assets/fondo-ahorros-6wn_w5YK.webp" alt="Gestión de fondo de ahorros" />
+      <img src="assets/fondo-ahorros.webp" alt="Gestión de fondo de ahorros" width="900" height="676" loading="lazy" decoding="async" />
     </div>
   </div>
 </section>
@@ -1093,7 +1096,7 @@
     <div class="video-card">
       <video
         src="assets/video-demo-1-DZNPXD3m.mp4#t=0.1"
-        preload="metadata"
+        preload="none"
         playsinline
         muted
       >Tu navegador no soporta el elemento de video.</video>
@@ -1107,7 +1110,7 @@
     <div class="video-card">
       <video
         src="assets/video-demo-2-DzGzLp5Z.mp4#t=0.1"
-        preload="metadata"
+        preload="none"
         playsinline
         muted
       >Tu navegador no soporta el elemento de video.</video>
@@ -1123,7 +1126,7 @@
 <!-- DEVICE -->
 <section id="device">
   <div class="device-row reveal">
-    <img src="assets/iphone-hand-B1-63cas.webp" alt="Usa la plantilla en cualquier dispositivo" />
+    <img src="assets/iphone-hand.webp" alt="Usa la plantilla en cualquier dispositivo" width="480" height="640" loading="lazy" decoding="async" />
     <div class="device-text">
       <p class="eyebrow">Utilízalo en</p>
       <h2>CUALQUIER <span>PARTE</span></h2>
@@ -1147,7 +1150,7 @@
         <h4>La plantilla definitiva</h4>
         <p>Antes compré muchas plantillas de finanzas personales, pero en todas había alguna función que les faltaba. En cambio esta plantilla ya tenía todo lo que necesitaba, ¡es súper completa!</p>
         <div class="tcard-foot">
-          <img src="assets/testimonial-veronica-D2Qwiada.webp" alt="Veronica M." />
+          <img src="assets/testimonial-veronica-D2Qwiada.webp" alt="Veronica M." width="88" height="88" loading="lazy" decoding="async" />
           <div>
             <div class="name">Veronica M.</div>
             <div class="date">01/04/25</div>
@@ -1160,7 +1163,7 @@
         <h4>Moderna y funcional</h4>
         <p>Moderna, clara y muy funcional. Me ahorra tiempo y ya no necesito andar buscando otras plantillas.</p>
         <div class="tcard-foot">
-          <img src="assets/testimonial-sebastian-Cxc_wN3k.png" alt="Sebastian V." />
+          <img src="assets/testimonial-sebastian.webp" alt="Sebastian V." width="128" height="128" loading="lazy" decoding="async" />
           <div>
             <div class="name">Sebastian V.</div>
             <div class="date">10/04/25</div>
@@ -1173,7 +1176,7 @@
         <h4>Diseño espectacular</h4>
         <p>Esta plantilla está muy bien diseñada, todo se ve muy moderno y ordenado. Me gustó mucho que pueda personalizarla a los colores que más me gustan.</p>
         <div class="tcard-foot">
-          <img src="assets/testimonial-angela-Df7HPj8f.webp" alt="Angela F." />
+          <img src="assets/testimonial-angela-Df7HPj8f.webp" alt="Angela F." width="88" height="88" loading="lazy" decoding="async" />
           <div>
             <div class="name">Angela F.</div>
             <div class="date">07/04/25</div>
@@ -1186,7 +1189,7 @@
         <h4>Muy fácil de usar</h4>
         <p>Me encantó el diseño y la facilidad de uso. Se nota que está pensada para personas reales con problemas reales.</p>
         <div class="tcard-foot">
-          <img src="assets/testimonial-nicolas-Czpz9FO7.png" alt="Nicolas A." />
+          <img src="assets/testimonial-nicolas.webp" alt="Nicolas A." width="128" height="128" loading="lazy" decoding="async" />
           <div>
             <div class="name">Nicolas A.</div>
             <div class="date">11/04/25</div>
@@ -1199,7 +1202,7 @@
         <h4>Completa para todo</h4>
         <p>Por fin una plantilla que tiene todo lo que necesito. Ordené mis finanzas en un día. Vale totalmente la pena invertir en mejorar y ordenar mis finanzas.</p>
         <div class="tcard-foot">
-          <img src="assets/testimonial-adrian-BplXc6pG.png" alt="Adrian P." />
+          <img src="assets/testimonial-adrian.webp" alt="Adrian P." width="128" height="128" loading="lazy" decoding="async" />
           <div>
             <div class="name">Adrian P.</div>
             <div class="date">08/04/25</div>
@@ -1224,7 +1227,7 @@
   <div class="container reveal">
     <p class="eyebrow">Además tenemos un REGALO para ti</p>
     <div class="bonus-row">
-      <img src="assets/dashboard-monitor-DyUt0VEx.png" alt="Plantilla de Control Financiero para Negocios" />
+      <img src="assets/dashboard-monitor.webp" alt="Plantilla de Control Financiero para Negocios" width="1200" height="900" loading="lazy" decoding="async" />
       <div class="bonus-text">
         <h2>SI TIENES UN NEGOCIO, TE REGALAMOS ESTA <span>PLANTILLA</span></h2>
         <p class="sub">DE CONTROL FINANCIERO:</p>
@@ -1254,9 +1257,11 @@
       <span class="badge-pill">✓ SOPORTE PRIORITARIO</span>
     </div>
     <img
-      src="assets/devices-mockup-DDJKGfvc.webp"
+      src="assets/devices-mockup.webp"
       alt="Plantilla de Finanzas Personales en todos los dispositivos"
-      style="max-width:620px; width:100%; margin:0 auto 20px; display:block;"
+      width="900" height="660"
+      loading="lazy" decoding="async"
+      style="max-width:620px; width:100%; margin:0 auto 20px; display:block; height:auto;"
     />
   </div>
 

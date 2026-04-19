@@ -5,3 +5,7 @@ Thumbs.db
 *.log
 .env
 .env.local
+
+.vercel
+node_modules
+package-lock.json
