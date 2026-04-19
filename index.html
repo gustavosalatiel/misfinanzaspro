@@ -25,7 +25,6 @@
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '2013089799417504');
-    fbq('track', 'PageView');
   </script>
   <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=2013089799417504&ev=PageView&noscript=1"
@@ -1462,13 +1461,40 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  // Meta Pixel — InitiateCheckout on CTA clicks
+  // Meta tracking — Pixel + CAPI with shared event_id (dedup)
+  function _metaGenId() {
+    return 'evt_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 10);
+  }
+  function _metaCookie(n) {
+    const m = document.cookie.match(new RegExp('(?:^|; )' + n + '=([^;]*)'));
+    return m ? decodeURIComponent(m[1]) : undefined;
+  }
+  function metaTrack(name, params) {
+    const p = params || {};
+    const eventId = _metaGenId();
+    try {
+      if (typeof fbq === 'function') fbq('track', name, p, { eventID: eventId });
+    } catch (e) {}
+    const payload = {
+      eventName: name,
+      eventId,
+      eventSourceUrl: location.href,
+      fbp: _metaCookie('_fbp'),
+      fbc: _metaCookie('_fbc'),
+    };
+    if (p.value !== undefined) { payload.value = p.value; payload.currency = p.currency || 'USD'; }
+    try {
+      fetch('/api/track', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(payload),
+        keepalive: true,
+      }).catch(() => {});
+    } catch (e) {}
+  }
+  metaTrack('PageView');
   document.querySelectorAll('a[href*="pay.hotmart.com"]').forEach(a => {
-    a.addEventListener('click', () => {
-      if (typeof fbq === 'function') {
-        fbq('track', 'InitiateCheckout', { value: 9, currency: 'USD' });
-      }
-    });
+    a.addEventListener('click', () => metaTrack('InitiateCheckout', { value: 9, currency: 'USD' }));
   });
 
   // Custom video play button
