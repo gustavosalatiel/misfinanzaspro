@@ -14,22 +14,9 @@
   <link rel="preload" as="image" href="assets/hero-mockup.webp" fetchpriority="high" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
 
-  <!-- Meta Pixel Code -->
-  <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '2013089799417504');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=2013089799417504&ev=PageView&noscript=1"
-    alt="" /></noscript>
-  <!-- End Meta Pixel Code -->
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src="https://track.misfinanzaspro.site/9lypshobo.js?"+i;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','7f7q2kvc=BgZSLyc9VFk8NSUgJTgzShlfXUZCVh0CUg8GGxUZFw0BGA4bAwIWQhwLGw0%3D');</script>
+  <!-- End Google Tag Manager -->
   <style>
     :root {
       --primary: 160 84% 39%;
@@ -1460,42 +1447,6 @@
   };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
-
-  // Meta tracking — Pixel + CAPI with shared event_id (dedup)
-  function _metaGenId() {
-    return 'evt_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 10);
-  }
-  function _metaCookie(n) {
-    const m = document.cookie.match(new RegExp('(?:^|; )' + n + '=([^;]*)'));
-    return m ? decodeURIComponent(m[1]) : undefined;
-  }
-  function metaTrack(name, params) {
-    const p = params || {};
-    const eventId = _metaGenId();
-    try {
-      if (typeof fbq === 'function') fbq('track', name, p, { eventID: eventId });
-    } catch (e) {}
-    const payload = {
-      eventName: name,
-      eventId,
-      eventSourceUrl: location.href,
-      fbp: _metaCookie('_fbp'),
-      fbc: _metaCookie('_fbc'),
-    };
-    if (p.value !== undefined) { payload.value = p.value; payload.currency = p.currency || 'USD'; }
-    try {
-      fetch('/api/track', {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify(payload),
-        keepalive: true,
-      }).catch(() => {});
-    } catch (e) {}
-  }
-  metaTrack('PageView');
-  document.querySelectorAll('a[href*="pay.hotmart.com"]').forEach(a => {
-    a.addEventListener('click', () => metaTrack('InitiateCheckout', { value: 9, currency: 'USD' }));
-  });
 
   // Custom video play button
   document.querySelectorAll('.play-overlay').forEach(btn => {
