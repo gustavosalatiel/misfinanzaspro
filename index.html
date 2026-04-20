@@ -14,6 +14,18 @@
   <link rel="preload" as="image" href="assets/hero-mockup.webp" fetchpriority="high" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
 
+  <!-- dataLayer init + product context (before GTM) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      page_type: 'landing',
+      product_id: 'misfinanzaspro',
+      product_name: 'Plantilla de Finanzas Personales',
+      price: 9,
+      currency: 'USD'
+    });
+  </script>
+
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src="https://track.misfinanzaspro.site/9lypshobo.js?"+i;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','7f7q2kvc=BgZSLyc9VFk8NSUgJTgzShlfXUZCVh0CUg8GGxUZFw0BGA4bAwIWQhwLGw0%3D');</script>
   <!-- End Google Tag Manager -->
@@ -1447,6 +1459,54 @@
   };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+
+  // Kiwify checkout click → dataLayer (GA4 e-commerce + Meta InitiateCheckout)
+  document.querySelectorAll('a[href*="pay.kiwify.com"]').forEach(a => {
+    a.addEventListener('click', () => {
+      (window.dataLayer = window.dataLayer || []).push({ ecommerce: null });
+      window.dataLayer.push({
+        event: 'begin_checkout',
+        ecommerce: {
+          currency: 'USD',
+          value: 9,
+          items: [{
+            item_id: 'misfinanzaspro',
+            item_name: 'Plantilla de Finanzas Personales',
+            price: 9,
+            quantity: 1
+          }]
+        }
+      });
+    });
+  });
+
+  // View Item event on scroll to pricing section
+  (function() {
+    const pricing = document.getElementById('obtener');
+    if (!pricing || !('IntersectionObserver' in window)) return;
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          (window.dataLayer = window.dataLayer || []).push({ ecommerce: null });
+          window.dataLayer.push({
+            event: 'view_item',
+            ecommerce: {
+              currency: 'USD',
+              value: 9,
+              items: [{
+                item_id: 'misfinanzaspro',
+                item_name: 'Plantilla de Finanzas Personales',
+                price: 9,
+                quantity: 1
+              }]
+            }
+          });
+          obs.disconnect();
+        }
+      });
+    }, { threshold: 0.3 });
+    obs.observe(pricing);
+  })();
 
   // Custom video play button
   document.querySelectorAll('.play-overlay').forEach(btn => {
