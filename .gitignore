@@ -9,3 +9,5 @@ Thumbs.db
 .vercel
 node_modules
 package-lock.json
+hero-placeholder-b64.txt
+b64-chunk.json

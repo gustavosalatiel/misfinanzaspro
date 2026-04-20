@@ -229,6 +229,8 @@
       animation: float 6s ease-in-out infinite;
       filter: drop-shadow(0 30px 50px rgba(0,0,0,.18));
     }
+    .hero-img.loaded-full { filter: none; }
+    .hero-img:not(.loaded-full) { filter: blur(12px); transition: filter .3s ease; }
 
     /* ── TICKER ── */
     .ticker-wrap {
@@ -1067,18 +1069,17 @@
       La forma más <span class="badge-simple">simple</span> de controlar tus ingresos y gastos,<br/>
       usada por miles de personas.
     </p>
-    <picture>
-      <source type="image/avif" srcset="assets/hero-mockup.avif" />
-      <img
-        src="assets/hero-mockup.webp"
-        alt="Mis Finanzas Pro - Vista de plantilla"
-        class="hero-img"
-        width="880" height="645"
-        loading="eager"
-        fetchpriority="high"
-        decoding="async"
-      />
-    </picture>
+    <img
+      src="data:image/webp;base64,UklGRgADAABXRUJQVlA4WAoAAAAQAAAAPwAALgAAQUxQSIACAAAF3yAWTAzmb9udQUSkTkJB20aOdDPhD/kHhoj+T4Ccxkd3QYQqQD5CFQDlRpIkSZJo7c0/wfbwqFoWImIC/vivua2ltZpljTXPhZbUipb2L2NGghJ55g4ZCRWpljH5NVotzF1n5UYrpRozw2giyI0RydeEkg/znpsUeYcIiRZSfCSbbfM1BYmFRBR5hpLMzNgJ+do6vikhkpTcme8hE1qvqOVBkpwZG6NTqOVmneJ0fCs2s5aQPINISiSR8Fk+O8aGrF+WG6FQNSz20T4Y8+sPkfWFhBwK6Ww2RIkwUXSSqkcM5TCsRUVBLZRSKiRzQy2YTSQ+BEvkpkhyg5AYFkkpN+lRIaXHyDOmzSAhvyeSoloTRBYMliCJPVpJKUUtX6OxmAgRJJOlpIjwJdOqZQjy5dkIJdJpQpM174Ug6QwRTkpZpnnXF3nXvEMkqVrR/Lwv8k0s76TKB+XnHY/2CEtL9lCihFc7a6xagjbNIosRCidSlAiRIqNhEHILkvToEKIPMljmfwcpdT5KQpBCwdwZpn1JCUWE0jRVRL5nQhNSKPgQZQRJ3jHIjlDKPVGCgq7Ucufd3BIisoqE9pAUOgwLRlSSkBI0mHw0PtCIZRqiOEneadmQROpFyLtyolDIc0gRRb7GtBYvcvPLXT6oSF8k1tSJTm6mrbHyiUj5sUGEFIRomruhUvkg++Iu6XjnmbvNkleiDPkapfYIDcaM8hFKhQixRxGf+Z7JWFuUUnJCLD9H9rLcsVUUSQSJtDMJ05nbdiSKrk4n6AS1YGQwmUkUfFKSEEx7TJposdWwJCSVUuTHBrmN3EybSKuSKEWvvNfOZI+fI1QJ0SP2WMg8M8YYVlA4IFoAAABQBACdASpAAC8APxFyrlA4pqSirVzMkxAiCWkA05wbd9yqcNyr3Zm05IAAAP7vFIcnUb0OdsU4shBoy3oGy+wYJ8ypBLdrYJdNPbViTa5VAjvBV4FZQPKwAAA="
+      data-src="assets/hero-mockup.avif"
+      data-src-fallback="assets/hero-mockup.webp"
+      alt="Mis Finanzas Pro - Vista de plantilla"
+      class="hero-img"
+      width="880" height="645"
+      loading="eager"
+      fetchpriority="high"
+      decoding="async"
+    />
   </div>
 </section>
 
@@ -1499,6 +1500,26 @@
 </footer>
 
 <script>
+  // Hero image swap: tiny placeholder → full AVIF
+  (function() {
+    var img = document.querySelector('.hero-img');
+    if (!img || !img.dataset.src) return;
+    var supportsAvif = document.createElement('canvas').toDataURL('image/avif').indexOf('data:image/avif') === 0;
+    var full = new Image();
+    full.onload = function() {
+      img.src = full.src;
+      img.classList.add('loaded-full');
+    };
+    full.onerror = function() {
+      if (img.dataset.srcFallback) {
+        var fb = new Image();
+        fb.onload = function() { img.src = fb.src; img.classList.add('loaded-full'); };
+        fb.src = img.dataset.srcFallback;
+      }
+    };
+    full.src = supportsAvif ? img.dataset.src : img.dataset.srcFallback;
+  })();
+
   // Header scroll state
   const header = document.getElementById('site-header');
   const onScroll = () => {
