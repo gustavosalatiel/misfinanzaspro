@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preload" as="image" href="assets/hero-mockup.avif" type="image/avif" fetchpriority="high" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet" />
 
   <!-- dataLayer init + product context (before GTM) -->
   <script>
@@ -1475,54 +1475,6 @@
   };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
-
-  // Kiwify checkout click → dataLayer (GA4 e-commerce + Meta InitiateCheckout)
-  document.querySelectorAll('a[href*="pay.kiwify.com"]').forEach(a => {
-    a.addEventListener('click', () => {
-      (window.dataLayer = window.dataLayer || []).push({ ecommerce: null });
-      window.dataLayer.push({
-        event: 'begin_checkout',
-        ecommerce: {
-          currency: 'USD',
-          value: 9,
-          items: [{
-            item_id: 'misfinanzaspro',
-            item_name: 'Plantilla de Finanzas Personales',
-            price: 9,
-            quantity: 1
-          }]
-        }
-      });
-    });
-  });
-
-  // View Item event on scroll to pricing section
-  (function() {
-    const pricing = document.getElementById('obtener');
-    if (!pricing || !('IntersectionObserver' in window)) return;
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          (window.dataLayer = window.dataLayer || []).push({ ecommerce: null });
-          window.dataLayer.push({
-            event: 'view_item',
-            ecommerce: {
-              currency: 'USD',
-              value: 9,
-              items: [{
-                item_id: 'misfinanzaspro',
-                item_name: 'Plantilla de Finanzas Personales',
-                price: 9,
-                quantity: 1
-              }]
-            }
-          });
-          obs.disconnect();
-        }
-      });
-    }, { threshold: 0.3 });
-    obs.observe(pricing);
-  })();
 
   // Custom video play button
   document.querySelectorAll('.play-overlay').forEach(btn => {
