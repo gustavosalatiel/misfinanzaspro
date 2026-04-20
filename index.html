@@ -11,7 +11,7 @@
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="image" href="assets/hero-mockup.webp" fetchpriority="high" />
+  <link rel="preload" as="image" href="assets/hero-mockup.avif" type="image/avif" fetchpriority="high" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
 
   <!-- dataLayer init + product context (before GTM) -->
@@ -1035,15 +1035,18 @@
       La forma más <span class="badge-simple">simple</span> de controlar tus ingresos y gastos,<br/>
       usada por miles de personas.
     </p>
-    <img
-      src="assets/hero-mockup.webp"
-      alt="Mis Finanzas Pro - Vista de plantilla"
-      class="hero-img"
-      width="1100" height="807"
-      loading="eager"
-      fetchpriority="high"
-      decoding="async"
-    />
+    <picture>
+      <source type="image/avif" srcset="assets/hero-mockup.avif" />
+      <img
+        src="assets/hero-mockup.webp"
+        alt="Mis Finanzas Pro - Vista de plantilla"
+        class="hero-img"
+        width="880" height="645"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+    </picture>
   </div>
 </section>
 
