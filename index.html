@@ -9,12 +9,20 @@
   <meta property="og:title" content="Mis Finanzas Pro - Plantilla de Finanzas Personales" />
   <meta property="og:description" content="La plantilla de finanzas personales más usada. Organiza tus gastos, ahorra más y elimina tus deudas con la regla 50/30/20." />
   <meta property="og:type" content="website" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preload" as="image" href="assets/hero-mockup.avif" type="image/avif" fetchpriority="high" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/poppins-900.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/poppins-400.woff2" crossorigin />
 
-  <!-- dataLayer init + product context (before GTM) -->
+  <!-- Meta Pixel inline (fastest PageView → max Connect Rate) -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','2013089799417504');
+    fbq('track','PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2013089799417504&ev=PageView&noscript=1" alt="" /></noscript>
+  <!-- End Meta Pixel -->
+
+  <!-- dataLayer init + product context -->
   <script>
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
@@ -30,17 +38,41 @@
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src="https://track.misfinanzaspro.site/9lypshobo.js?"+i;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','7f7q2kvc=BgZSLyc9VFk8NSUgJTgzShlfXUZCVh0CUg8GGxUZFw0BGA4bAwIWQhwLGw0%3D');</script>
   <!-- End Google Tag Manager -->
 
-  <!-- UTMify Pixel -->
+  <!-- UTMify Pixel (deferred until window.load to not block LCP) -->
   <script>
     window.pixelId = "69e59216de81c4c8e18022f6";
-    var a = document.createElement("script");
-    a.setAttribute("async", "");
-    a.setAttribute("defer", "");
-    a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
-    document.head.appendChild(a);
+    window.addEventListener('load', function(){
+      var a = document.createElement("script");
+      a.setAttribute("async", "");
+      a.setAttribute("defer", "");
+      a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+      document.head.appendChild(a);
+    });
   </script>
   <!-- End UTMify Pixel -->
   <style>
+    @font-face {
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('assets/fonts/poppins-400.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url('assets/fonts/poppins-700.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 900;
+      font-display: swap;
+      src: url('assets/fonts/poppins-900.woff2') format('woff2');
+    }
+
     :root {
       --primary: 160 84% 39%;
       --primary-light: 160 84% 50%;
